@@ -100,7 +100,7 @@ Pi 想为一位零基础朋友做一个个人向的日系穿搭参考网站。�
       "category": "top",
       "brand": "UNIQLO",
       "productName": "宽松版牛津扣领衬衫",
-      "priceRange": "¥199",
+      "price": "¥199",
       "image": "/images/essentials/white-oxford.jpg",
       "buyUrl": "https://www.uniqlo.cn/...",
       "note": "一件挡十件。能上班能约会，袖口卷一下就是周末。"
@@ -128,12 +128,13 @@ Pi 想为一位零基础朋友做一个个人向的日系穿搭参考网站。�
 
 ### 7.1 首页（Lookbook）
 - 顶部：极简 header（站名 + Essentials 链接 + 场景筛选 chips）
+- 场景 chips 交互：原地过滤（无跳转 / 无 URL 变化），点击同一个 chip 再次取消；多选之间是 OR 关系。过滤状态只活在内存，刷新回到"全部"
 - 主体：搭配卡片瀑布流（desktop 3 列 / tablet 2 列 / mobile 1 列）
 - 卡片：大图 / 顶部角落 `No. XX` + 场景标签 / 下方标题 + 中文副标 / 小色板
 - 底部：footer（"为 [朋友名] 做 · 2026" 之类）
 
 ### 7.2 搭配详情页
-- 顶部：全宽 hero 图（可滑动切换多视角，若有）
+- 顶部：全宽 hero 图（v1 单张；多视角延后）
 - 标题 + 一句话 tagline
 - 场景标签 · 日期/天气适配提示（可选）
 - 单品网格：4-5 件单品卡片，每张点击可外跳购买
@@ -178,7 +179,7 @@ Pi 想为一位零基础朋友做一个个人向的日系穿搭参考网站。�
 - **前端**：Vanilla HTML + CSS + JavaScript（无框架）
 - **数据**：单份 `data.json` 手动维护
 - **样式**：一份 `styles.css`，CSS 变量管理 token，响应式用 media query
-- **路由**：URL hash 路由（`/#/outfit/weekday-01`）或简单的静态 path + `index.html` 回退
+- **路由**：URL hash 路由（`/#/outfit/weekday-01`）· 选择 hash 路由因为 GitHub Pages 无 SPA fallback，hash 模式最省心
 - **PWA**：基础 `manifest.json` + service worker（可离线缓存图片和 JSON）
 - **构建**：无构建步骤 · 纯静态文件
 - **部署**：GitHub Pages（repo 命名如 `jp-style-site`，走 `pipiquan352.github.io/jp-style-site/`）
@@ -241,7 +242,6 @@ Non-metric 成功标志：网站让他觉得"挺好看的、不土"，愿意在�
 2. **朋友是否知道这是给他做的**？还是做完惊喜上线？（影响 footer 文案和 tagline 语气）
 3. **是否需要加一个"为什么做这个"的 About 页**？（1 段话介绍，非必需）
 4. **购买链接的跳转行为**：新窗口 or 同窗口？（推荐新窗口，留着 Lookbook 上下文）
-5. **10 套搭配的具体清单**由谁来定？—— Pi 来选，但需要 Pi 花时间过一遍 UNIQLO/MUJI/COS lookbook。估算内容生产工作量。
 
 ## 14. Implementation Phases (preview)
 
