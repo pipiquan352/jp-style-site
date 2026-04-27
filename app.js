@@ -158,6 +158,17 @@ async function initEssentials() {
   }).join('');
 
   document.getElementById('essentials').innerHTML = groups;
+
+  document.getElementById('copy-list').addEventListener('click', async () => {
+    const lines = data.essentials.map(e =>
+      `- ${e.name}（${e.brand} · ${e.price}）${e.buyUrl}`
+    ).join('\n');
+    await navigator.clipboard.writeText(lines);
+    const btn = document.getElementById('copy-list');
+    const original = btn.textContent;
+    btn.textContent = '已复制 ✓';
+    setTimeout(() => { btn.textContent = original; }, 1500);
+  });
 }
 
 if (PAGE === 'lookbook') initLookbook();
