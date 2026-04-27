@@ -147,3 +147,85 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid var(--color-border);
   display: inline-block;
 }
+
+.hero {
+  aspect-ratio: 16 / 10;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--color-bg-warm);
+  margin: 0;
+}
+
+.outfit-header {
+  max-width: 720px;
+  margin: var(--space-5) auto var(--space-4);
+  padding: 0 var(--space-4);
+  text-align: center;
+}
+
+.outfit-header__scene {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+}
+
+.outfit-header__title {
+  font-size: 36px;
+  margin: var(--space-2) 0;
+}
+
+.outfit-header__tagline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+  max-width: var(--max-width);
+  margin: var(--space-5) auto;
+  padding: 0 var(--space-4);
+}
+
+.item__image {
+  aspect-ratio: 1 / 1;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--color-bg-warm);
+  margin-bottom: var(--space-1);
+}
+
+.item__brand {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.item__name { font-size: 14px; }
+.item__price { font-size: 13px; color: var(--color-text-muted); }
+
+.related {
+  max-width: var(--max-width);
+  margin: var(--space-6) auto;
+  padding: 0 var(--space-4);
+}
+
+.related__heading {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.related__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+}
