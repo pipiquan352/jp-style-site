@@ -1,3 +1,5 @@
+import { filterOutfitsByScenes } from './lib.js';
+
 const PAGE = document.body.dataset.page;
 
 async function loadData() {
@@ -23,10 +25,44 @@ function renderOutfitCard(outfit) {
   `;
 }
 
+const SCENE_LABELS = {
+  weekday: '工作日',
+  weekend: '周末',
+  date: '约会',
+  'semi-formal': '略正式',
+};
+
+function renderChips(scenes, activeScenes) {
+  return scenes
+    .map(s => {
+      const active = activeScenes.has(s) ? 'is-active' : '';
+      return `<button class="chip ${active}" data-scene="${s}">${SCENE_LABELS[s] || s}</button>`;
+    })
+    .join('');
+}
+
 async function initLookbook() {
   const data = await loadData();
-  document.getElementById('grid').innerHTML =
-    data.outfits.map(renderOutfitCard).join('');
+  const scenes = [...new Set(data.outfits.map(o => o.scene))];
+  const activeScenes = new Set();
+
+  function rerender() {
+    document.getElementById('chips').innerHTML = renderChips(scenes, activeScenes);
+    const filtered = filterOutfitsByScenes(data.outfits, [...activeScenes]);
+    document.getElementById('grid').innerHTML =
+      filtered.map(renderOutfitCard).join('');
+  }
+
+  document.getElementById('chips').addEventListener('click', e => {
+    const btn = e.target.closest('.chip');
+    if (!btn) return;
+    const s = btn.dataset.scene;
+    if (activeScenes.has(s)) activeScenes.delete(s);
+    else activeScenes.add(s);
+    rerender();
+  });
+
+  rerender();
 }
 
 if (PAGE === 'lookbook') initLookbook();
