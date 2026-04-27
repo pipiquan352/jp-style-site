@@ -18,3 +18,7 @@ export function buildEssentialsReverseIndex(outfits) {
   }
   return index;
 }
+
+export function lookupById(items, id) {
+  return items.find(item => item.id === id);
+}

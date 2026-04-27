@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { filterOutfitsByScenes, parseOutfitIdFromHash, buildEssentialsReverseIndex } from '../lib.js';
+import { filterOutfitsByScenes, parseOutfitIdFromHash, buildEssentialsReverseIndex, lookupById } from '../lib.js';
 
 const sample = [
   { id: 'a', scene: 'weekday' },
@@ -51,5 +51,17 @@ describe('buildEssentialsReverseIndex', () => {
 
   it('returns an empty Map for empty outfits', () => {
     expect(buildEssentialsReverseIndex([]).size).toBe(0);
+  });
+});
+
+describe('lookupById', () => {
+  const items = [{ id: 'a', name: 'A' }, { id: 'b', name: 'B' }];
+
+  it('finds item by id', () => {
+    expect(lookupById(items, 'a').name).toBe('A');
+  });
+
+  it('returns undefined when not found', () => {
+    expect(lookupById(items, 'x')).toBeUndefined();
   });
 });
