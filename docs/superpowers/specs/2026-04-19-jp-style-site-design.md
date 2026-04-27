@@ -131,7 +131,8 @@ Pi 想为一位零基础朋友做一个个人向的日系穿搭参考网站。�
 - 场景 chips 交互：原地过滤（无跳转 / 无 URL 变化），点击同一个 chip 再次取消；多选之间是 OR 关系。过滤状态只活在内存，刷新回到"全部"
 - 主体：搭配卡片瀑布流（desktop 3 列 / tablet 2 列 / mobile 1 列）
 - 卡片：大图 / 顶部角落 `No. XX` + 场景标签 / 下方标题 + 中文副标 / 小色板
-- 底部：footer（"为 [朋友名] 做 · 2026" 之类）
+- footer 上方：一行 serif italic 小字 `A personal style reference. Not a tutorial.`（中文版 `一份给朋友的穿搭参考，不是教程。`）
+- footer：`Made for Zao · 2026`
 
 ### 7.2 搭配详情页
 - 顶部：全宽 hero 图（v1 单张；多视角延后）
@@ -230,18 +231,19 @@ Pi 想为一位零基础朋友做一个个人向的日系穿搭参考网站。�
 ## 12. Success Criteria
 
 网站上线后 1 个月内：
-- 朋友至少完整看过一次 Lookbook
-- 朋友照着买了 >=5 件 essentials
-- 朋友能主动说"我照着哪套穿了"
+- 灶至少完整看过一次 Lookbook
+- 灶照着买了 >=5 件 essentials
+- 灶反馈他实际上身了哪几件（为 v2 替换成本人照做铺垫）
+- 灶能主动说"我照着哪套穿了"
 
 Non-metric 成功标志：网站让他觉得"挺好看的、不土"，愿意在无聊时打开翻一翻。
 
-## 13. Open Questions
+## 13. Resolved Decisions
 
-1. **朋友的名字 / 代号**：footer 是否放他的名字？还是用 "To a friend" 这种含蓄写法？（Pi 决定）
-2. **朋友是否知道这是给他做的**？还是做完惊喜上线？（影响 footer 文案和 tagline 语气）
-3. **是否需要加一个"为什么做这个"的 About 页**？（1 段话介绍，非必需）
-4. **购买链接的跳转行为**：新窗口 or 同窗口？（推荐新窗口，留着 Lookbook 上下文）
+1. **朋友代号**：灶（Zao）。footer 用英文 `Made for Zao · 2026`
+2. **灶知道这个网站**：不是惊喜。文案语气可以正常对话感，未来 v2 加入他本人上身照
+3. **不做单独 About 页**：首页 footer 上方一行 serif italic 小字代替
+4. **购买链接**：新窗口打开（`target="_blank" rel="noopener"`），保留 Lookbook 上下文
 
 ## 14. Implementation Phases (preview)
 
