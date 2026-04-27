@@ -89,6 +89,19 @@ async function initOutfit() {
       </a>
     `).join('');
 
+    const related = (outfit.relatedOutfitIds || [])
+      .map(rid => lookupById(data.outfits, rid))
+      .filter(Boolean);
+
+    const relatedHtml = related.length
+      ? `<section class="related">
+          <h3 class="related__heading">Related</h3>
+          <div class="related__grid">
+            ${related.map(renderOutfitCard).join('')}
+          </div>
+        </section>`
+      : '';
+
     document.getElementById('outfit').innerHTML = `
       <figure class="hero" style="background-image:url('${outfit.heroImage}')"></figure>
       <header class="outfit-header">
@@ -97,6 +110,7 @@ async function initOutfit() {
         <p class="outfit-header__tagline">${outfit.tagline}</p>
       </header>
       <section class="items">${itemCards}</section>
+      ${relatedHtml}
     `;
   }
   window.addEventListener('hashchange', render);
