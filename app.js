@@ -75,8 +75,29 @@ async function initOutfit() {
         '<p class="empty">Outfit not found. <a href="index.html">Back to Lookbook</a></p>';
       return;
     }
-    document.getElementById('outfit').innerHTML =
-      `<h1>${outfit.title}</h1><p>${outfit.tagline}</p>`;
+
+    const items = outfit.itemIds
+      .map(itemId => lookupById(data.essentials, itemId))
+      .filter(Boolean);
+
+    const itemCards = items.map(item => `
+      <a class="item" href="${item.buyUrl}" target="_blank" rel="noopener">
+        <div class="item__image" style="background-image:url('${item.image}')"></div>
+        <div class="item__brand">${item.brand}</div>
+        <div class="item__name">${item.name}</div>
+        <div class="item__price">${item.price}</div>
+      </a>
+    `).join('');
+
+    document.getElementById('outfit').innerHTML = `
+      <figure class="hero" style="background-image:url('${outfit.heroImage}')"></figure>
+      <header class="outfit-header">
+        <span class="outfit-header__scene">${outfit.sceneLabel}</span>
+        <h1 class="outfit-header__title">${outfit.title}</h1>
+        <p class="outfit-header__tagline">${outfit.tagline}</p>
+      </header>
+      <section class="items">${itemCards}</section>
+    `;
   }
   window.addEventListener('hashchange', render);
   render();
