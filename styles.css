@@ -229,3 +229,77 @@ a { color: inherit; text-decoration: none; }
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-3);
 }
+
+.essentials-intro {
+  max-width: 720px;
+  margin: var(--space-5) auto var(--space-4);
+  padding: 0 var(--space-4);
+  text-align: center;
+  font-family: var(--font-serif);
+  font-size: 20px;
+}
+
+.link-button {
+  background: none;
+  border: 1px solid var(--color-text);
+  padding: 8px 18px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  cursor: pointer;
+  margin-top: var(--space-2);
+}
+
+.essentials-group {
+  max-width: var(--max-width);
+  margin: var(--space-5) auto;
+  padding: 0 var(--space-4);
+}
+
+.essentials-group__heading {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.essentials-group__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+}
+
+.essential {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.essential__image {
+  aspect-ratio: 1 / 1;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--color-bg-warm);
+  margin-bottom: var(--space-1);
+}
+
+.essential__name { font-size: 14px; }
+.essential__brand {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.essential__price { font-size: 13px; color: var(--color-text-muted); }
+.essential__buy {
+  display: inline-block;
+  margin-top: var(--space-1);
+  font-size: 13px;
+  border-bottom: 1px solid var(--color-text);
+  align-self: flex-start;
+}
+.essential__usedin {
+  font-size: 12px;
+  color: var(--color-accent);
+  margin-top: 4px;
+}
