@@ -1,4 +1,4 @@
-import { filterOutfitsByScenes, parseOutfitIdFromHash, lookupById } from './lib.js';
+import { filterOutfitsByScenes, parseOutfitIdFromHash, lookupById, buildEssentialsReverseIndex } from './lib.js';
 
 const PAGE = document.body.dataset.page;
 
@@ -31,6 +31,15 @@ const SCENE_LABELS = {
   date: '约会',
   'semi-formal': '略正式',
 };
+
+const CATEGORY_LABELS = {
+  top: '上衣',
+  bottom: '下装',
+  outer: '外套',
+  shoe: '鞋',
+  accessory: '配件',
+};
+const CATEGORY_ORDER = ['top', 'bottom', 'outer', 'shoe', 'accessory'];
 
 function renderChips(scenes, activeScenes) {
   return scenes
@@ -117,5 +126,40 @@ async function initOutfit() {
   render();
 }
 
+async function initEssentials() {
+  const data = await loadData();
+  const reverse = buildEssentialsReverseIndex(data.outfits);
+
+  const groups = CATEGORY_ORDER.map(cat => {
+    const items = data.essentials.filter(e => e.category === cat);
+    if (items.length === 0) return '';
+    const cards = items.map(item => {
+      const usedIn = (reverse.get(item.id) || []).length;
+      const usedLink = usedIn > 0
+        ? `<a class="essential__usedin" href="outfit.html#${reverse.get(item.id)[0]}">出现在 ${usedIn} 套搭配里</a>`
+        : '';
+      return `
+        <article class="essential">
+          <div class="essential__image" style="background-image:url('${item.image}')"></div>
+          <div class="essential__name">${item.name}</div>
+          <div class="essential__brand">${item.brand}</div>
+          <div class="essential__price">${item.price}</div>
+          <a class="essential__buy" href="${item.buyUrl}" target="_blank" rel="noopener">购买</a>
+          ${usedLink}
+        </article>
+      `;
+    }).join('');
+    return `
+      <section class="essentials-group">
+        <h2 class="essentials-group__heading">${CATEGORY_LABELS[cat]}</h2>
+        <div class="essentials-group__grid">${cards}</div>
+      </section>
+    `;
+  }).join('');
+
+  document.getElementById('essentials').innerHTML = groups;
+}
+
 if (PAGE === 'lookbook') initLookbook();
 if (PAGE === 'outfit') initOutfit();
+if (PAGE === 'essentials') initEssentials();
