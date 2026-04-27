@@ -1,4 +1,4 @@
-import { filterOutfitsByScenes } from './lib.js';
+import { filterOutfitsByScenes, parseOutfitIdFromHash, lookupById } from './lib.js';
 
 const PAGE = document.body.dataset.page;
 
@@ -65,4 +65,22 @@ async function initLookbook() {
   rerender();
 }
 
+async function initOutfit() {
+  const data = await loadData();
+  function render() {
+    const id = parseOutfitIdFromHash(location.hash);
+    const outfit = id && lookupById(data.outfits, id);
+    if (!outfit) {
+      document.getElementById('outfit').innerHTML =
+        '<p class="empty">Outfit not found. <a href="index.html">Back to Lookbook</a></p>';
+      return;
+    }
+    document.getElementById('outfit').innerHTML =
+      `<h1>${outfit.title}</h1><p>${outfit.tagline}</p>`;
+  }
+  window.addEventListener('hashchange', render);
+  render();
+}
+
 if (PAGE === 'lookbook') initLookbook();
+if (PAGE === 'outfit') initOutfit();
