@@ -1,5 +1,9 @@
 import { filterOutfitsByScenes, parseOutfitIdFromHash, lookupById, buildEssentialsReverseIndex } from './lib.js';
 
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+
 const PAGE = document.body.dataset.page;
 
 async function loadData() {
