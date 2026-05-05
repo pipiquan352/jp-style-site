@@ -167,10 +167,14 @@ async function initEssentials() {
     const lines = data.essentials.map(e =>
       `- ${e.name}（${e.brand} · ${e.price}）${e.buyUrl}`
     ).join('\n');
-    await navigator.clipboard.writeText(lines);
     const btn = document.getElementById('copy-list');
     const original = btn.textContent;
-    btn.textContent = '已复制 ✓';
+    try {
+      await navigator.clipboard.writeText(lines);
+      btn.textContent = '已复制 ✓';
+    } catch {
+      btn.textContent = '复制失败，请长按选中';
+    }
     setTimeout(() => { btn.textContent = original; }, 1500);
   });
 }
