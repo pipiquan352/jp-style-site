@@ -5,7 +5,7 @@
       "name": "白色牛津衬衫",
       "nameEn": "White Oxford Shirt",
       "category": "top",
-      "brand": "UNIQLO",
+      "brand": "UNIQLO U",
       "productName": "宽松版牛津扣领衬衫",
       "price": "¥199",
       "image": "images/essentials/white-oxford.jpg",
@@ -14,15 +14,15 @@
     },
     {
       "id": "khaki-chino",
-      "name": "卡其直筒裤",
-      "nameEn": "Khaki Chino",
+      "name": "米白阔腿卡其裤",
+      "nameEn": "Cream Wide Chino",
       "category": "bottom",
-      "brand": "UNIQLO",
-      "productName": "Smart Ankle Pants",
-      "price": "¥299",
+      "brand": "UNIQLO U",
+      "productName": "Wide Chino Pants",
+      "price": "¥499",
       "image": "images/essentials/khaki-chino.jpg",
       "buyUrl": "https://www.uniqlo.cn/",
-      "note": "比西裤随性，比休闲裤利落。"
+      "note": "比西裤随性，比休闲裤利落。剪裁是关键。"
     },
     {
       "id": "brown-loafer",
@@ -52,27 +52,75 @@
   "outfits": [
     {
       "id": "weekday-01",
-      "title": "Oxford, Chino, Loafer.",
-      "subtitle": "白衬衫 + 卡其裤 + 乐福鞋",
+      "title": "Navy, Khaki, Brown.",
+      "subtitle": "海军衬衫 + 卡其阔腿 + 棕色配饰",
       "scene": "weekday",
       "sceneLabel": "工作日 · 周一晨会",
       "heroImage": "images/outfits/weekday-01.jpg",
-      "tagline": "最稳的一套。颜色不超过三个，剪裁干净就够了。",
-      "itemIds": ["white-oxford-shirt", "khaki-chino", "brown-loafer", "simple-belt"],
-      "colors": ["#f7f3ea", "#b89968", "#3a2a20"],
-      "relatedOutfitIds": ["weekend-01"]
+      "tagline": "三色封顶。海军 + 卡其 + 棕色，常胜搭配。",
+      "itemIds": ["khaki-chino", "brown-loafer", "simple-belt"],
+      "colors": ["#1d2842", "#b89968", "#5c4030"],
+      "relatedOutfitIds": ["date-01", "weekend-04"]
     },
     {
       "id": "weekend-01",
-      "title": "Off-duty Linen.",
-      "subtitle": "亚麻衬衫 + 卡其裤 + 运动鞋",
+      "title": "Stripes, Wide Pants.",
+      "subtitle": "黑白条纹 + 灰阔腿 + 板鞋",
       "scene": "weekend",
       "sceneLabel": "周末 · 出门吃饭",
       "heroImage": "images/outfits/weekend-01.jpg",
-      "tagline": "不正式不邋遢，刚好够拍照。",
-      "itemIds": ["white-oxford-shirt", "khaki-chino"],
-      "colors": ["#ffffff", "#b89968", "#7a7468"],
-      "relatedOutfitIds": ["weekday-01"]
+      "tagline": "条纹是最低成本的'穿搭过得去'。",
+      "itemIds": [],
+      "colors": ["#1a1a1a", "#7a7468", "#3a3a3a"],
+      "relatedOutfitIds": ["weekend-04", "weekend-02"]
+    },
+    {
+      "id": "weekend-02",
+      "title": "Polo Shorts.",
+      "subtitle": "海军 polo + 米色短裤 + 白运动鞋",
+      "scene": "weekend",
+      "sceneLabel": "周末 · 夏日出门",
+      "heroImage": "images/outfits/weekend-02.jpg",
+      "tagline": "polo 是夏天最不出错的 piece，有领但不正式。",
+      "itemIds": [],
+      "colors": ["#1d2842", "#cdb088", "#f5f0e6"],
+      "relatedOutfitIds": ["weekend-03", "weekday-01"]
+    },
+    {
+      "id": "weekend-03",
+      "title": "All Blue.",
+      "subtitle": "蓝格衬衫 + 海军短裤 + 蓝运动鞋",
+      "scene": "weekend",
+      "sceneLabel": "周末 · 夏日散步",
+      "heroImage": "images/outfits/weekend-03.jpg",
+      "tagline": "全身蓝调，靠白 tee 提亮，不会闷。",
+      "itemIds": ["white-oxford-shirt"],
+      "colors": ["#3a5a8a", "#1d2842", "#f5f0e6"],
+      "relatedOutfitIds": ["weekend-02", "weekday-01"]
+    },
+    {
+      "id": "weekend-04",
+      "title": "All Grey.",
+      "subtitle": "灰卫衣 + 灰短裤 + 白运动鞋",
+      "scene": "weekend",
+      "sceneLabel": "周末 · 运动咖",
+      "heroImage": "images/outfits/weekend-04.jpg",
+      "tagline": "一身灰，配双干净的鞋就够了。",
+      "itemIds": [],
+      "colors": ["#5a5a5a", "#3a3a3a", "#f5f0e6"],
+      "relatedOutfitIds": ["weekend-01", "weekend-02"]
+    },
+    {
+      "id": "date-01",
+      "title": "Knit, Tailored.",
+      "subtitle": "橄榄针织 + 白色西装短裤 + 棕色绒面",
+      "scene": "date",
+      "sceneLabel": "约会 · 晚餐偏正式",
+      "heroImage": "images/outfits/date-01.jpg",
+      "tagline": "约会能穿，见长辈也能穿。这就是老钱风。",
+      "itemIds": ["brown-loafer"],
+      "colors": ["#5d6045", "#f5f0e6", "#7a5a40"],
+      "relatedOutfitIds": ["weekday-01", "weekend-02"]
     }
   ]
 }
